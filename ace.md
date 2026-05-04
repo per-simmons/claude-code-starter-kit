@@ -1,6 +1,6 @@
-# ACE: Six-Phase Workflow
+# ACE — Advanced Context Engineering
 
-Six phases I run on anything bigger than a one-line task. Not a tool, not a slash command — a discipline. Run it in your head, in a checklist, or as literal sub-agents.
+Six phases I run on builds. Not a tool, not a slash command — a discipline. Run it in your head, in a checklist, or as literal sub-agents.
 
 ```
 research → plan → implement → validate → review → compound
@@ -101,4 +101,4 @@ Once a quarter, prune. Stale learnings confuse the model worse than missing ones
 
 Throwaway scripts, one-line edits, exploratory prompts where you want the model's first instinct: skip everything except Implement.
 
-Anything with a deliverable, anything you'll look at twice, anything where wrong answers cost you: run all six.
+Builds — anything with a deliverable, anything you'll look at twice, anything where wrong answers cost you: run all six.
