@@ -59,6 +59,25 @@ Trigger phrases: "QA this", "verify the work", "check if that's actually done".
 
 Every checklist item must be answerable as a hard PASS or FAIL with evidence. If it can't be, rewrite it.
 
+## Optional: visual verification with Playwright
+
+The default flow above only needs file reads. If the artifact is *rendered* — a slide deck, webpage, dashboard, chart — file reads aren't enough. The execution agent needs to see what a human sees.
+
+Add Playwright in one of two ways:
+
+- **Playwright MCP** — installs as an MCP server in Claude Code. The execution agent gets tools like `browser_navigate`, `browser_screenshot`, `browser_snapshot`. It opens the URL or local HTML, screenshots each slide/page, and checks against the checklist.
+- **Playwright CLI** — if you'd rather not run an MCP, the agent can shell out to `playwright` directly via Bash. Same outcome, less ergonomic.
+
+The orchestration is identical. Only the evidence type changes — screenshot path instead of row count.
+
+| Checklist item | Evidence |
+|---|---|
+| "Slide 4 chart x-axis covers Jan–Dec 2024" | screenshot of slide 4 showing axis labels |
+| "Page header is 28pt navy blue" | screenshot + computed style snapshot |
+| "Submit button enables after form fills" | screenshots before/after |
+
+For pure data work (spreadsheets, CSVs, documents), skip Playwright. For visual deliverables, wire it in.
+
 ## When to skip
 
 For one-line edits, throwaway exploration, or anything you'll inspect by hand in 10 seconds, don't bother. This is for work too big to eyeball, too important to ship blind, or that has burned you before.
